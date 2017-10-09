@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>cheche</title>
+</head>
+<body>
+	<div>
+		<ul>
+			<li>内容1</li>
+			<li>内容2</li>
+			<li>内容3</li>
+		</ul> 	        
+	</div>
+	<button id="buttonMy">点击这里获取更多内容</button>   
+	<script>
+
+		var buttonMy =document.getElementById("buttonMy")
+		console.log(buttonMy)
+		buttonMy.addEventListener('click',function(){
+			JSONP("http://duowan.com/duowan.js",function(data){
+				alert(第一次)
+				alert(data)
+			})
+			JSONP("http://duowan.com/duowan.js",function(data){
+				alert(第二次)
+				alert(data)
+			})
+
+		})
+		function JSONP(url,fn){
+			var getMessage = "Message" + parseInt(Math.random()*1000,10)
+			window[getMessage] = fn   //window.getMessage = function(data){alert('第一次获取数据/n'+data)}
+			var script = document.createElement('script')
+			script.src=url + "?callback=" + getMessage
+			document.head.appendChild(script)
+		}
+	</script>
+</body>
+</html>
