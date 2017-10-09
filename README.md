@@ -10,7 +10,7 @@
 
 ## 具体实现代码
 1. 声明封装一个jsonp的函数,并且传入两个参数url和一个随机的Messagexxx,因为防止多次跨域请求得到的资源不会被覆盖.让每一次请求的资源都能够独立的显示.
-```javascripy
+```JavaScript
  function jsonp(url,fn){
   var Message = 'Message'+parseInt(Math.randow()*1000,10)  //生成随机Message
   window[Message] = fn                                     //让这个随机Message是window中的key,这里不使用window.Message主要是因为这个Message是随机每一都不一样.
